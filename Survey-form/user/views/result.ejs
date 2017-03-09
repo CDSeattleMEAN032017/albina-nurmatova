@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Survey Form</title>
+</head>
+<style>
+	div{
+		width: 500px;
+		border: 1px solid black;
+		padding: 10px;
+
+	}
+	.submit{
+		width: 100px;
+		background-color: grey;
+		font-weight: bold;
+	}
+</style>
+<body>
+	<div class="form">
+		<h1>Submitted Info</h1>
+		<p>Name : <%= users.name %></p>
+		<p>Dojo Location : <%= users.location %></p>
+		<p>Favorite Language : <%= users.language %></p>
+		<p>Comment : <%= users.comment %></p>
+		<form action="/submit" method="post">
+			<input type="submit" name="submit" value="GO BACK">
+		</form>
+	</div>
+	<!-- <% for (var i = 0; i < users.length; i++) { %>
+        <h3>Name: <%= users[i].name %></h3>
+        <h4>Email: <%= users[i].email %></h4>
+        <hr>
+    <% } %> -->
+    
+</body>
+</html>
