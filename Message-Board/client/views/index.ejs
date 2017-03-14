@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<style>
+	input{
+		display: block;
+
+	}
+	textarea{
+		display: block;
+
+	}
+</style>
+<body>
+	<div>
+		<form action="/message" method="post">
+			Name : <input type="text" name="name">
+			Message :<textarea name="message"></textarea>
+			<input type="submit" value="Post Message">
+		</form>
+			<hr>
+
+	</div>
+	<div>
+		<% if (message && message.length > 0) { %>
+			<% for (var i = 0; i < message.length; i++) { %>
+		 		<h2>Name :  <%= message[i].name %></h2>
+				<p>Message :  <%= message[i].text %></p>
+				
+		<form action="/message/<%= message[i].id %>" method="post">
+			Name : <input type="text" name="name">
+			Comment :<textarea name="comment"></textarea>
+			<input type="submit" value="Post Comment">			
+		</form>
+				<% if (message[i].comments &&  message[i].comments.length > 0) {%>
+					<% for (j = 0; j < message[i].comments.length; j++) { %>
+				 		<h5 style="padding-left: 20px;">Name :  <%= message[i].comments[j].name %></h5>
+				 		<p style="padding-left: 20px;">Comment :  <%= message[i].comments[j].text %></p>
+
+					<% } %> 
+				<% } %>
+			<hr>
+			<% } %> 
+		<% } %>
+			
+	</div>
+	
+</body>
+</html>
