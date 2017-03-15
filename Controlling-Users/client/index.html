@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="bower_components/angular/angular.js"></script>
+	<script>
+		var myApp = angular.module('myApp', []);
+    	myApp.controller('usersController', ['$scope', function ($scope){
+        	$scope.users = [];
+        	$scope.add_user = function(){
+        		$scope.users.push($scope.new_user)
+        		$scope.new_user ={}
+        	}
+			$scope.delete = function(idx){
+				var user_delete = $scope.users[idx]
+				$scope.users.splice($scope.users.indexOf(user_delete),1)
+			}
+			
+    	}])
+		
+	</script>
+	<style>
+	fieldset{
+		width: 500px;
+	}
+	input{
+		display: block;
+		margin-bottom: 10px;
+	}
+	table{
+		border: 1px solid black;
+	}
+	</style>
+</head>
+	<body ng-app='myApp'>
+		<div ng-controller ='usersController'>
+			<form ng-submit="add_user()">
+				<fieldset>
+					<legend>Users Controller</legend>
+					First Name  : <input type="text" ng-model="new_user.first_name">
+					Last Name  : <input type="text" ng-model="new_user.last_name">
+					Favorite Language  : <input type="text" ng-model="new_user.language">
+					Date : <input type="date" ng-model="new_user.date">
+					Search Users: <input type="text" ng-model="filter_user">
+      
+					<input type="submit" value="Create User" >
+
+				<table>
+				<tr>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Fav Language</th>
+					<th>Created At</th>
+					<th>Actions</th>
+
+				</tr>
+				<tr ng-repeat="user in users | filter:filter_user track by $index">
+					<td >{{user.first_name}}</td>
+					<td>{{user.last_name}}</td>
+					<td>{{user.language}}</td>
+					<td>{{user.date | date: "yyyy-MM-dd"}}</td>
+					<td><button ng-click="delete()">Remove</button></td>
+				</tr>
+				</table>
+		
+			</fieldset>
+			</form>
+			
+		</div>
+	
+	</body>
+</html>
