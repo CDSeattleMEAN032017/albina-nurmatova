@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="/js/module.js"></script>
+	<script src="/js/factory.js"></script>
+	<script src="/js/controller.js"></script>
+	<style>
+	fieldset{
+		width: 500px;
+	}
+	input{
+		display: block;
+		margin-bottom: 10px;
+	}
+	table{
+		border: 1px solid black;
+	}
+	th{
+		width: 150px;
+	}
+	td{
+		width: 150px;
+		text-align: center;
+	}
+
+	</style>
+</head>
+<body ng-app='myApp'>
+	<div ng-controller='productsController'>
+		<form>
+			<fieldset>
+				<legend>Products Controller</legend>
+				Product Name : <input type="text" ng-model='new_product.name'>
+				Product Price : <input type="number" ng-model='new_product.price'>
+				<input type="submit" ng-click='controller_method_add()'>
+
+				<table>
+				<tr>
+					<th>Name</th>
+					<th>Price</th>
+					<th>Action</th>
+
+				</tr>
+				<tr ng-repeat="product in products">
+					<td >{{product.name}}</td>
+					<td>$ {{product.price}}</td>
+					<td><button ng-click="remove($index)">Remove</button></td>
+				</tr>
+				</table>
+			</fieldset>
+		</form>
+	</div>
+
+	<div ng-controller='ordersController'>
+		<form>
+			<fieldset>
+				<legend>Orders Controller</legend>
+				<table>
+				<tr>
+					<th>Name</th>
+					<th>Price</th>
+					<th>Qty Available</th>
+					<th>Action</th>
+
+				</tr>
+				<tr ng-repeat="product in products">
+					<td >{{product.name}}</td>
+					<td>$ {{product.price}}</td>
+					<td>{{product.qtyAvailable}}</td>
+					<td><button ng-click="buy($index)">Buy</button></td>
+				</tr>
+				</table>
+			</fieldset>
+		</form>		
+	</div>
+	
+	
+</body>
+</html>
