@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="angular/angular.js"></script>
+	<script src="angular-route/angular-route.js"></script>
+	<script src="/js/module.js"></script>
+	<script src="/js/playerFactory.js"></script>
+	<script src="/js/teamFactory.js"></script>
+	<script src="/js/controllers.js"></script>
+
+</head>
+<style>
+	table{
+		border: 1px solid black;
+	}
+	th{
+		width: 250px;
+	}
+	td{
+		width: 250px;
+		text-align: center;
+	}
+</style>
+<body ng-app='app'>
+	
+	<a href="#!/players">Players</a>
+	<a href="#!/teams">Teams</a>
+	<a href="#!/associations">Associations</a>
+	<div ng-view=''></div>
+	
+</body>
+</html>
